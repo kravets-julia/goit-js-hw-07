@@ -36,7 +36,14 @@ const bigImg = basicLightbox.create(`
     <img src = "${evt.target.dataset.source}" widht="800" height="600"/>
 `)
 
-bigImg.show()
-
+bigImg.show(()=> {
+	document.onkeydown = function(evt) {
+		let isEscape = false;
+		if ( "key" in evt ) {
+			isEscape = ( evt.code === "Escape");
+		   bigImg.close();
+		}
+  }
+	});
 }
 
