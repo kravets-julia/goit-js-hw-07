@@ -6,7 +6,8 @@ const cardsGalery = (createGaleryItems(galleryItems));
 gallaryContainer.insertAdjacentHTML('beforeend', cardsGalery);
 console.log(gallaryContainer)
 
-gallaryContainer.addEventListener('click', onClickContainer)
+gallaryContainer.addEventListener('click', onClickContainer);
+
 
 function createGaleryItems(galleryItems){
     return galleryItems.map(({preview, original, description}) => {
@@ -36,14 +37,17 @@ const bigImg = basicLightbox.create(`
     <img src = "${evt.target.dataset.source}" widht="800" height="600"/>
 `)
 
-bigImg.show(()=> {
-	document.onkeydown = function(evt) {
+function onEscClose (evt) {
 		let isEscape = false;
 		if ( "key" in evt ) {
 			isEscape = ( evt.code === "Escape");
-		   bigImg.close();
+     	   bigImg.close();
 		}
   }
-	});
+	
+bigImg.show()
+gallaryContainer.addEventListener('keydown', onEscClose)
+bigImg.close();
+gallaryContainer.removeEventListener('keydown', onEscClose)
 }
 
