@@ -6,7 +6,6 @@ const cardsGalery = (createGaleryItems(galleryItems));
 gallaryContainer.insertAdjacentHTML('beforeend', cardsGalery);
 console.log(gallaryContainer)
 
-gallaryContainer.addEventListener('click', onClickContainer)
 
 function createGaleryItems(galleryItems){
     return galleryItems.map(({preview, original, description}) => {
@@ -27,26 +26,39 @@ function createGaleryItems(galleryItems){
  }
 
 
-function onClickContainer(evt) {
-    evt.preventDefault();
-
-    if(evt.target.nodeName !== 'IMG') {
-        return
-      }
-
- var lightbox = new SimpleLightbox('.gallery a', {
+let gallery = new SimpleLightbox('.gallery a', {
     captions: "true",
     captionSelector: "img",
     captionsData: "alt",
     captionPosition: "bottom",
     captionDelay: 250,
     scrollZoom: false,
-
  });
 
- if(evt.currentTarget.nodeName === 'IMG') {
-  close.SimpleLightbox;}
+ gallery.on('show.simplelightbox', function () {})
+ console.log(gallery)
 
- console.log(lightbox)
+// gallaryContainer.addEventListener('click', onClickContainer)
 
-}
+// function onClickContainer(evt) {
+//     evt.preventDefault();
+
+//     if(evt.target.nodeName !== 'IMG') {
+//         return
+//       }
+
+//  var lightbox = new SimpleLightbox('.gallery a', {
+//     captions: "true",
+//     captionSelector: "img",
+//     captionsData: "alt",
+//     captionPosition: "bottom",
+//     captionDelay: 250,
+//     scrollZoom: false,
+
+//  });
+
+//  if(evt.currentTarget.nodeName === 'IMG') {
+//   close.SimpleLightbox;}
+
+//  console.log(lightbox)
+// }
