@@ -6,6 +6,8 @@ const cardsGalery = (createGaleryItems(galleryItems));
 gallaryContainer.insertAdjacentHTML('beforeend', cardsGalery);
 console.log(gallaryContainer)
 
+gallaryContainer.addEventListener('click', onClickContainer)
+
 function createGaleryItems(galleryItems){
     return galleryItems.map(({preview, original, description}) => {
         return `
@@ -23,6 +25,18 @@ function createGaleryItems(galleryItems){
     }).join('');
  }
 
+function onClickContainer (evt) {
+    evt.preventDefault();
 
+if(evt.target.nodeName !== 'IMG') {
+  return
+}
 
+const bigImg = basicLightbox.create(`
+    <img src = "${evt.target.dataset.source}" widht="800" height="600"/>
+`)
+
+bigImg.show()
+
+}
 
