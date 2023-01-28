@@ -33,21 +33,25 @@ if(evt.target.nodeName !== 'IMG') {
   return
 }
 
+
+
+  const options=
+  {onShow: (bigImg) => {
+    window.addEventListener('keydown', onEscClose)},
+  onClose: (bigImg) => {
+    window.removeEventListener('keydown', onEscClose);      
+      }
+  }
+  function onEscClose (evt) {
+    if ( evt.code === "Escape")
+    bigImg.onClose();
+}
+
 const bigImg = basicLightbox.create(`
     <img src = "${evt.target.dataset.source}" widht="800" height="600"/>
-`)
+`, options).show()
 
-function onEscClose (evt) {
-		let isEscape = false;
-		if ( "key" in evt ) {
-			isEscape = ( evt.code === "Escape");
-     	   bigImg.close();
-		}
   }
-	
-bigImg.show()
-gallaryContainer.addEventListener('keydown', onEscClose)
-bigImg.close();
-gallaryContainer.removeEventListener('keydown', onEscClose)
-}
+
+
 

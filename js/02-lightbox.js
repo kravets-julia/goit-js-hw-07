@@ -27,38 +27,8 @@ function createGaleryItems(galleryItems){
 
 
 let gallery = new SimpleLightbox('.gallery a', {
-    captions: "true",
-    captionSelector: "img",
     captionsData: "alt",
-    captionPosition: "bottom",
     captionDelay: 250,
-    scrollZoom: false,
  });
 
- gallery.on('show.simplelightbox', function () {})
- console.log(gallery)
 
-// gallaryContainer.addEventListener('click', onClickContainer)
-
-// function onClickContainer(evt) {
-//     evt.preventDefault();
-
-//     if(evt.target.nodeName !== 'IMG') {
-//         return
-//       }
-
-//  var lightbox = new SimpleLightbox('.gallery a', {
-//     captions: "true",
-//     captionSelector: "img",
-//     captionsData: "alt",
-//     captionPosition: "bottom",
-//     captionDelay: 250,
-//     scrollZoom: false,
-
-//  });
-
-//  if(evt.currentTarget.nodeName === 'IMG') {
-//   close.SimpleLightbox;}
-
-//  console.log(lightbox)
-// }
